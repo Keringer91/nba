@@ -67,6 +67,25 @@
     </head>
     <body>
         
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Teams</a>
+            </li>
+                @if(Auth::check())
+                    <li><a href="#" class="nav-link ml-auto"> {{ Auth()->user()->name }}</a></li>
+                    <li><a href="/logout" class="nav-link ml-auto">Logout</a></li>
+                @else
+                    <li><a href="/login" class="nav-link">Login</a></li>
+                    <li><a href="/register" class="nav-link">Register</a></li>
+                @endif    
+        </ul>
+
+        @if($message = session('message'))
+            <div class="alert alert-success">
+                {{$message}}
+            </div>
+        @endif
+
         @yield('content')
 
     </body>
