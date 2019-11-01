@@ -26,3 +26,9 @@ Route::post('/register','RegisterController@store');
 Route::get('/login', 'LoginController@create')->name('login');
 Route::post('/login', 'LoginController@store');
 Route::get('/logout', 'LoginController@destroy');
+
+Route::post('/teams/{id}/comments', 'CommentsController@store')->middleware('comments');
+
+Route::get('/error-message', function () {
+    return view('error-message');
+});
